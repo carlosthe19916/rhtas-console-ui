@@ -11,31 +11,15 @@ import {
   DrawerHead,
   DrawerPanelContent,
 } from "@patternfly/react-core";
-// import { rows } from '../TrustRoots.data';
 
-// import { useQuery } from '@tanstack/react-query';
-
-import { TrustRootsDrawerContent } from "./TrustRootsDrawerContent";
 import { exampleTrustRoots } from "../data/TrustRoots.data";
 import TrustRootRow, { type LastStatus, type TrustRootRowProps } from "./TrustRootRow";
+import { TrustRootsDrawerContent } from "./TrustRootsDrawerContent";
 
 const TrustRootsDataList = () => {
   const [selectedRow, setSelectedRow] = useState("");
   const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(undefined);
-
-  // const { isPending, error, data } = useQuery({
-  //   queryKey: ['trustConfig'],
-  //   queryFn: () => fetch('http://localhost:8080/api/v1/trust/config').then((res) => res.json()),
-  // });
-
-  // if (isPending) return 'Loading...';
-
-  // if (error) return 'An error has occurred: ' + error.message;
-
-  // if (data) {
-  //   console.table(data);
-  // }
 
   const getStatus = (id: string): LastStatus => {
     const dummyStatuses: { id: string; lastStatus: LastStatus }[] = [
