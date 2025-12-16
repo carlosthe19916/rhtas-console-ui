@@ -161,3 +161,18 @@ jobs:
           path: |
             e2e/test-results
             e2e/playwright-report
+      
+      - name: Generate coverage report
+        run: |
+          npx nyc report --temp-dir e2e/.nyc_output --reporter=html --reporter=text --reporter=lcov
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v5
+        with:
+          name: coverage-report
+          path: coverage
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: ${{ github.repository_owner }}/rhtas-console-ui
+          flags: e2e
