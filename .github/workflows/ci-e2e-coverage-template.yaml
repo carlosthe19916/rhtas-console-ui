@@ -128,7 +128,7 @@ jobs:
 
       - name: rhtas-console-ui - start in dev mode
         run: |
-          npm run start:dev & echo "dev ui started"
+          CONSOLE_API_URL=http://localhost:${{ steps.start-rhtas-console.outputs.server_port }} npm run start:dev & echo "dev ui started"
       - name: rhtas-console-ui - wait
         run: |
           until curl -s http://localhost:3000 | grep -qi "<html"; do
@@ -141,7 +141,7 @@ jobs:
           curl http://localhost:3000
       - name: Tests with coverage
         run: |
-          PW_TEST_CONNECT_WS_ENDPOINT=ws://localhost:${{ steps.start-rhtas-console.outputs.playwright_port }}/ CONSOLE_UI_URL=http://localhost:3000 CONSOLE_API_URL=http://localhost:${{ steps.start-rhtas-console.outputs.server_port }} npm run -w e2e test
+          PW_TEST_CONNECT_WS_ENDPOINT=ws://localhost:${{ steps.start-rhtas-console.outputs.playwright_port }}/ CONSOLE_UI_URL=http://localhost:3000 npm run -w e2e test
           ls -la .nyc_output
 
       - name: Generate coverage report
