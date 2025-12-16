@@ -1,4 +1,4 @@
-![Coverage](./coverage-badge.svg)
+test![Coverage](./coverage-badge.svg)
 
 # RHTAS Console UI
 
