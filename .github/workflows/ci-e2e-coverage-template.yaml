@@ -167,3 +167,4 @@ jobs:
         with:
           token: ${{ secrets.codecov_token }}
           slug: ${{ github.repository_owner }}/rhtas-console-ui
+          flags: e2e
