@@ -24,6 +24,9 @@ on:
         type: string
         required: false
         default: ""
+    secrets:
+      codecov_token:
+        required: false
 
 jobs:
   check-images:
@@ -162,5 +165,5 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ secrets.codecov_token }}
           slug: ${{ github.repository_owner }}/rhtas-console-ui

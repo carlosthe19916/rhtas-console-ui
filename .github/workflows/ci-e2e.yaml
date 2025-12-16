@@ -116,3 +116,5 @@ jobs:
       # Won't be used as for coverage the ui will start in dev mode
       ui_image: ghcr.io/securesign/rhtas-console-ui:pr-test
       server_db_image: docker.io/library/mariadb:10.5
+    secrets:
+      codecov_token: ${{ secrets.CODECOV_TOKEN }}
